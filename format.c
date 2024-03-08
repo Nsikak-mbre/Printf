@@ -2,38 +2,42 @@
 
 /**
  * print_char -  writes char
- * @c: element to be written
+ * @list: list of args
  * Return: 0 if successful
  */
-int print_char(char c)
+int print_char(va_list list)
 {
-	my_putchar(c);
-	return (0);
+	my_putchar(va_arg(list, int));
+	return (1);
 }
 
 /**
  * print_string -  writes string
- * @str: element to be written
+ * @list: list of args
  * Return: 0 if successful
  */
-int print_string(const char *str)
+int print_string(va_list list)
 {
-	if (str == NULL)
-		return (-1);
-	while (*str != '\0')
-	{
-		my_putchar(*str);
-		str++;
-	}
-	return (0);
+	int count;
+	char *ptr;
+	ptr = va_arg(list, char *);
+	if (ptr == NULL)
+		return (0);
+	for (count = 0; ptr[count] != '\0'; count++)
+		my_putchar(ptr[count]);
+	return (count);
 }
+
+
 
 /**
  * print_percent_sign -  writes %
+ * @list: list of args
  * Return: 0 if successful
  */
-int print_percent_sign(void)
+int print_percent_sign(va_list list)
 {
+	(void)list;
 	my_putchar('%');
 	return (0);
 }

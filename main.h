@@ -15,14 +15,14 @@
 typedef struct
 {
 	char *flag;
-	int (*f_ptr)(va_list);
+	int (*f)(va_list);
 } spec;
 
 int _printf(const char *format, ...);
-int lexer(char *format, spec func_ptr[], va_list arg_list);
-void my_putchar(char c);
-int print_char(char c);
-int print_string(const char *str);
-int print_percent_sign();
+int lexer(const char *format, spec func_ptr[], va_list arg_list);
+int my_putchar(char c);
+int print_char(va_list list);
+int print_string(va_list list);
+int print_percent_sign(va_list list);
 
 #endif

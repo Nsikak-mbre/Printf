@@ -6,9 +6,9 @@
  * @arg_list: containg parameters passed to a func_ptrtion at runtime
  * Return: count of printed character
  */
-int lexer(char *format, spec func_ptr_ptr[], va_list arg_list)
+int lexer(const char *format, spec func_ptr[], va_list arg_list)
 {
-	int = 0, j, temp_val, printed_char = 0;
+	int i = 0, j, temp_val, printed_char = 0;
 
 
 	while (format[i] != '\0' && format[i] == '%')
@@ -21,7 +21,7 @@ int lexer(char *format, spec func_ptr_ptr[], va_list arg_list)
 				temp_val = func_ptr[j].f(arg_list);
 				if (temp_val == -1)
 					return (-1);
-				printed_char +=  r_val;
+				printed_char +=  temp_val;
 				break;
 			}
 			j++;
@@ -39,7 +39,6 @@ int lexer(char *format, spec func_ptr_ptr[], va_list arg_list)
 		}
 		i++;
 	}
-	else
 	{
 		my_putchar(format[i]);
 		printed_char++;

@@ -8,10 +8,10 @@
 int _printf(const char *format, ...)
 {
 	int char_written;
-	specifier func_ptr[] = {
-		{"c", write_char},
-		{"s", write_string},
-		{"%", write_percent_sign},
+	spec func_ptr[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent_sign},
 		{NULL, NULL}
 	};
 	va_list arg_list;
@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	if (!format)
 		return (-1);
 	va_start(arg_list, format);
-	char_written = lexer(format, fun_ptr, arg_list);
+	char_written = lexer(format, func_ptr, arg_list);
 	va_end(arg_list);
 	return (char_written);
 }
