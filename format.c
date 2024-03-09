@@ -1,4 +1,17 @@
 #include "main.h"
+/**
+ * _strlen - calculates the length of a string
+ * @s: the string to measure
+ * Return: The length of the string
+ */
+int _strlen(const char *s)
+{
+	int len = 0;
+
+	while (s[len])
+		len++;
+	return (len);
+}
 
 /**
  * print_char -  writes char
@@ -7,7 +20,7 @@
  */
 int print_char(va_list list)
 {
-	my_putchar(va_arg(list, int));
+	_putchar(va_arg(list, int));
 	return (1);
 }
 
@@ -21,10 +34,11 @@ int print_string(va_list list)
 	int count;
 	char *ptr;
 	ptr = va_arg(list, char *);
+
 	if (ptr == NULL)
 		return (0);
 	for (count = 0; ptr[count] != '\0'; count++)
-		my_putchar(ptr[count]);
+		_putchar(ptr[count]);
 	return (count);
 }
 
@@ -35,10 +49,10 @@ int print_string(va_list list)
  * @list: list of args
  * Return: 0 if successful
  */
-int print_percent_sign(va_list list)
+int print_percent(va_list list)
 {
 	(void)list;
-	my_putchar('%');
+	_putchar('%');
 	return (0);
 }
 

@@ -7,20 +7,35 @@
 
 int _printf(const char *format, ...)
 {
-	int char_written;
-	spec func_ptr[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent_sign},
-		{NULL, NULL}
-	};
-	va_list arg_list;
+	va_list args;
+	int i = 0, count = 0;
+	int (*print_func)(va_list);
 
-	if (!format)
-		return (-1);
-	va_start(arg_list, format);
-	char_written = lexer(format, func_ptr, arg_list);
-	va_end(arg_list);
-	return (char_written);
+	va_start(args, format);
+	while (format && format[i])
+	{
+		if (format[i] == '%')
+		{
+			if (format[i + 1] == '\0')
+				return (-1);
+			print_func = get_print_func(format[i + 1]);
+			if (print_func)
+				count += print_func(args);
+			else
+			{
+				_putchar('%');
+				_putchar(format[i + 1]);
+				count += 2;
+			}
+			i++;
+		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
+		}
+		i++;
+	}
+	va_end(args);
+	return (count);
 }
-

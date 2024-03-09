@@ -14,15 +14,16 @@
 
 typedef struct
 {
-	char *flag;
-	int (*f)(va_list);
-} spec;
+	char specifier;
+	int (*func)(va_list);
+} print_func;
 
 int _printf(const char *format, ...);
-int lexer(const char *format, spec func_ptr[], va_list arg_list);
-int my_putchar(char c);
+int (*get_print_func(const char specifier))(va_list);
+int _strlen(const char *s);
+int _putchar(char c);
 int print_char(va_list list);
 int print_string(va_list list);
-int print_percent_sign(va_list list);
+int print_percent(va_list list);
 
 #endif
