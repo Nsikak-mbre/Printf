@@ -1,7 +1,8 @@
 #include "main.h"
 /**
- * my_putchar -  writes char to stdout
+ * _putchar -  writes char to stdout
  * @c: given input
+ * Return: given element on stsout
  */
 int _putchar(char c)
 {

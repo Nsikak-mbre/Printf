@@ -33,8 +33,8 @@ int print_string(va_list list)
 {
 	int count;
 	char *ptr;
-	ptr = va_arg(list, char *);
 
+	ptr = va_arg(list, char *);
 	if (ptr == NULL)
 		return (0);
 	for (count = 0; ptr[count] != '\0'; count++)
@@ -45,7 +45,7 @@ int print_string(va_list list)
 
 
 /**
- * print_percent_sign -  writes %
+ * print_percent-  writes %
  * @list: list of args
  * Return: 0 if successful
  */

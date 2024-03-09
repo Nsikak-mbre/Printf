@@ -8,15 +8,15 @@
 
 /**
  * struct spec - defines a structure for flags and functions
- * @flag: The operator
- * @f: the function associated
+ * @specifier: The operator
+ * @func: the function associated
  */
 
 typedef struct
 {
 	char specifier;
 	int (*func)(va_list);
-} print_func;
+}print_func;
 
 int _printf(const char *format, ...);
 int (*get_print_func(const char specifier))(va_list);
